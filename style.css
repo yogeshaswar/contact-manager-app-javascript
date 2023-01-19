@@ -74,11 +74,15 @@ hr {
     color: red;
     padding: 6px 4px;
     cursor: pointer;
-    border: 1px solid red;
-    border-radius: 5px;
+    border: 1px solid rgb(11, 11, 11);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 2px;
     text-transform: lowercase;
+}
+#btn-delete:hover {
+    background-color: brown;
+    color: aliceblue;
+    border: none;
 }
