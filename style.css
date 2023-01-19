@@ -3,12 +3,50 @@
     padding: 0;
 }
 
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 nav {
     text-align: center;
     background-color: rgb(3, 5, 56);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     padding: 8px;
     font-size: 22px;
     text-transform: uppercase;
+}
+#add-contact {
+    width: 80%;
+    margin: 10px auto;
+}
+label {
+    font-size: 18px;
+    display: block;
+    margin: 10px 0;
+}
+.form-group {
+    margin: 15px 0;
+}
+input {
+    border: 1px solid black;
+    font-size: 22px;
+    padding: 10px 2px;
+    width: 100%;
+    border-radius: 5px;
+}
+button {
+    background-color: rgb(47, 202, 47);
+    color: white;
+    padding: 10px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+button:hover {
+    background-color: green;
 }
