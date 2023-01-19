@@ -50,3 +50,35 @@ button {
 button:hover {
     background-color: green;
 }
+hr {
+    width: 80%;
+    margin: 20px auto;
+    opacity: 0.5;
+}
+#contact {
+    width: 80%;
+    margin: 10px auto;
+    border: 1px solid rgb(108, 101, 101);
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    position: relative;
+}
+#name-display {
+    font-weight: bold;
+}
+#btn-delete {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: white;
+    color: red;
+    padding: 6px 4px;
+    cursor: pointer;
+    border: 1px solid red;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 2px;
+    text-transform: lowercase;
+}
