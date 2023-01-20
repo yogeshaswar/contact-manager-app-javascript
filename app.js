@@ -10,6 +10,9 @@ btnAddContact.addEventListener("click", function(e){
     e.preventDefault()
     const isValid = form.checkValidity()
     if(isValid) {
+        //old data from local storage
+        var contactData = localStorage.getItem("contacts");
+        var result = JSON.parse(contactData);
         //created object to store key:value pair
         var contactDetails = {
             firstName : firstName.value,
@@ -18,6 +21,7 @@ btnAddContact.addEventListener("click", function(e){
         }
         //adding this object to allContacts array
         allContacts.push(contactDetails);
+        result.push(contactDetails);
         // To save data in local storage
         //can't pass array to local storage function so converted into string
         localStorage.setItem("contacts", JSON.stringify(allContacts));
@@ -74,8 +78,7 @@ function invalidInputMessage() {
 //to retrive and show save local storage data on screen
 loadContacts()
 function loadContacts() {
-    var contactData = localStorage.getItem("contacts");
-    console.log(contactData);
+    var contactData = localStorage.getItem("contacts"); 
     var result = JSON.parse(contactData);
 
     result.forEach((contactDetails) => {
