@@ -24,7 +24,7 @@ btnAddContact.addEventListener("click", function(e){
         result.push(contactDetails);
         // To save data in local storage
         //can't pass array to local storage function so converted into string
-        localStorage.setItem("contacts", JSON.stringify(allContacts));
+        localStorage.setItem("contacts", JSON.stringify(result));
 
         //To create contact HTML - new div element
         createContact()
