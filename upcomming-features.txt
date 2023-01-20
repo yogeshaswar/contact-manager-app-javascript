@@ -1,0 +1,6 @@
+1. using local storage to save contactList
+2. exception handling 
+    A. Duplicate Contact, mobile number
+    B. mobile number < 10 digit
+3. searching contact using name/mobile number
+4. sorting contacts
