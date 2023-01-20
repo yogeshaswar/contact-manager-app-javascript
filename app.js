@@ -31,4 +31,11 @@ function createContact(){
 function removeContact(contact){
     var contactToDelete = contact;
     contactToDelete.parentElement.remove();
+    deleteMessage();
+}
+
+function deleteMessage() {
+    var deletMessage = document.getElementById("delete-message");
+    deletMessage.className = "show";
+    setTimeout(function(){ deletMessage.className = deletMessage.className.replace("show", ""); }, 3000);
 }
