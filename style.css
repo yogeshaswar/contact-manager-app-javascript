@@ -86,7 +86,7 @@ hr {
     color: aliceblue;
     border: none;
 }
-#delete-message {
+#message {
     visibility: hidden; /* Hidden by default. Visible on click */
     min-width: 250px; /* default minimum width */
     margin-left: -125px; /* Divide value of min-width by 2 */
@@ -102,7 +102,7 @@ hr {
 }
 
 /* Show the delete message snackbar when clicking on a button (class added with JavaScript) */
-#delete-message.show {
+#message.show {
   visibility: visible; /* Show the snackbar */
   /* Added animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */

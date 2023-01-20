@@ -26,6 +26,7 @@ function createContact(){
     <p id="mobile-display">${mobileNumber.value}</p>
     <button id="btn-delete" onclick="removeContact(this)">Delete</button>`
     contactList.appendChild(contactItem);
+    contactAddedMessage();
 }
 
 function removeContact(contact){
@@ -35,7 +36,14 @@ function removeContact(contact){
 }
 
 function deleteMessage() {
-    var deletMessage = document.getElementById("delete-message");
-    deletMessage.className = "show";
-    setTimeout(function(){ deletMessage.className = deletMessage.className.replace("show", ""); }, 3000);
+    var message = document.getElementById("message");
+    message.innerText = "One contact deleted successfully!"
+    message.className = "show";
+    setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
+}
+function contactAddedMessage() {
+    var message = document.getElementById("message");
+    message.innerText = "One contact added successfully!"
+    message.className = "show";
+    setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
 }
