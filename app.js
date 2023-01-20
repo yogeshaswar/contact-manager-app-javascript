@@ -10,16 +10,17 @@ btnAddContact.addEventListener("click", function(e){
     e.preventDefault()
     const isValid = form.checkValidity()
     if(isValid) {
+        //created object to store key:value pair
         var contactDetails = {
             firstName : firstName.value,
             email : email.value,
             mobileNumber : mobileNumber.value
         }
+        //adding this object to allContacts array
         allContacts.push(contactDetails);
-        console.log(details)
         // To save data in local storage
         //can't pass array to local storage function so converted into string
-        localStorage.setItem("name", JSON.stringify(allContacts));
+        localStorage.setItem("contacts", JSON.stringify(allContacts));
 
         //To create contact HTML - new div element
         createContact()
@@ -36,7 +37,7 @@ btnAddContact.addEventListener("click", function(e){
 
 function createContact(){
     const contactItem = document.createElement("div");
-    contactItem.setAttribute("id", "contact");
+    contactItem.classList.add("contact")
     contactItem.innerHTML = `<p id="name-display">${firstName.value}</p>
     <p id="email-display">${email.value}</p>
     <p id="mobile-display">${mobileNumber.value}</p>
@@ -69,3 +70,24 @@ function invalidInputMessage() {
     message.className = "show";
     setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
 }
+
+//to retrive and show save local storage data on screen
+loadContacts()
+function loadContacts() {
+    var contactData = localStorage.getItem("contacts");
+    console.log(contactData);
+    var result = JSON.parse(contactData);
+
+    result.forEach((contactDetails) => {
+        console.log(contactDetails);
+        const contactItem = document.createElement("div");
+        contactItem.classList.add("contact")
+        contactItem.innerHTML = `<p id="name-display">${contactDetails.firstName}</p>
+        <p id="email-display">${contactDetails.email}</p>
+        <p id="mobile-display">${contactDetails.mobileNumber}</p>
+        <button id="btn-delete" onclick="removeContact(this)">Delete</button>`
+        contactList.appendChild(contactItem);
+        //contactAddedMessage();
+    });
+}
+

@@ -55,7 +55,7 @@ hr {
     margin: 20px auto;
     opacity: 0.5;
 }
-#contact {
+.contact {
     width: 80%;
     margin: 10px auto;
     border: 1px solid rgb(108, 101, 101);
