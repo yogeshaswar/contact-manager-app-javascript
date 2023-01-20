@@ -32,10 +32,10 @@ function createContact(){
 function removeContact(contact){
     var contactToDelete = contact;
     contactToDelete.parentElement.remove();
-    deleteMessage();
+    contactDeleteMessage();
 }
 
-function deleteMessage() {
+function contactDeleteMessage() {
     var message = document.getElementById("message");
     message.innerText = "One contact deleted successfully!"
     message.className = "show";
