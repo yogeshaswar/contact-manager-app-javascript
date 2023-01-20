@@ -13,7 +13,7 @@ btnAddContact.addEventListener("click", function(e){
         email.value = ""
         mobileNumber.value = ""
     } else {
-        alert("Invalid Input")
+        invalidInputMessage()
     }
     
 })
@@ -44,6 +44,12 @@ function deleteMessage() {
 function contactAddedMessage() {
     var message = document.getElementById("message");
     message.innerText = "One contact added successfully!"
+    message.className = "show";
+    setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
+}
+function invalidInputMessage() {
+    var message = document.getElementById("message");
+    message.innerText = "Invalid Input!"
     message.className = "show";
     setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
 }
