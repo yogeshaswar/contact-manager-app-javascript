@@ -24,9 +24,11 @@ function createContact(){
     contactItem.innerHTML = `<p id="name-display">${firstName.value}</p>
     <p id="email-display">${email.value}</p>
     <p id="mobile-display">${mobileNumber.value}</p>
-    <button id="btn-delete">Delete</button>`
+    <button id="btn-delete" onclick="removeContact(this)">Delete</button>`
     contactList.appendChild(contactItem);
-
-
 }
- 
+
+function removeContact(contact){
+    var contactToDelete = contact;
+    contactToDelete.parentElement.remove();
+}
