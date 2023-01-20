@@ -3,6 +3,10 @@ const firstName = document.getElementById("name")
 const email = document.getElementById("email")
 const mobileNumber = document.getElementById("mobile-number")
 const contactList = document.getElementById("contact-list")
+
+createContact()
+
+
 // created array to store contacts in key : value pair
 var allContacts = []
 
@@ -19,12 +23,19 @@ btnAddContact.addEventListener("click", function(e){
             email : email.value,
             mobileNumber : mobileNumber.value
         }
-        //adding this object to allContacts array
-        //allContacts.push(contactDetails);
-        result.push(contactDetails);
-        // To save data in local storage
-        //can't pass array to local storage function so converted into string
-        localStorage.setItem("contacts", JSON.stringify(result));
+
+        if(result == null) {
+            allContacts.push(contactDetails);
+            localStorage.setItem("contacts", JSON.stringify(allContacts));
+        } else {
+            //adding this object to allContacts array
+            //allContacts.push(contactDetails);
+            result.push(contactDetails);
+            // To save data in local storage
+            //can't pass array to local storage function so converted into string
+            localStorage.setItem("contacts", JSON.stringify(result));
+        }
+        
 
         //To create contact HTML - new div element
         //To remove old contacts
@@ -53,10 +64,24 @@ btnAddContact.addEventListener("click", function(e){
 //     contactAddedMessage();
 // }
 
-function removeContact(contact){
-    var contactToDelete = contact;
-    contactToDelete.parentElement.remove();
+function removeContact(contact, contactDetails){
+    var confirm = window.confirm("Do you want to delete this contact")
+
+    if(confirm){
+    //retriving local storage
+    var contactData = localStorage.getItem("contacts"); 
+    var result = JSON.parse(contactData);
+    //used to remove contact from local storage (index, how many?)
+    result.splice(contactDetails, 1)
+    localStorage.setItem("contacts", JSON.stringify(result));
+    var element = contact;
+    element.parentElement.remove()
     contactDeleteMessage();
+    // createContact();
+    } else {
+        cancelled()
+    }
+    
 }
 
 function contactDeleteMessage() {
@@ -77,9 +102,15 @@ function invalidInputMessage() {
     message.className = "show";
     setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
 }
+function cancelled() {
+    var message = document.getElementById("message");
+    message.innerText = "Cancelled"
+    message.className = "show";
+    setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
+}
 
 //to retrive and show save local storage data on screen
-createContact()
+
 function createContact() {
     var contactData = localStorage.getItem("contacts"); 
     var result = JSON.parse(contactData);
@@ -91,7 +122,7 @@ function createContact() {
         contactItem.innerHTML = `<p id="name-display">${contactDetails.firstName}</p>
         <p id="email-display">${contactDetails.email}</p>
         <p id="mobile-display">${contactDetails.mobileNumber}</p>
-        <button id="btn-delete" onclick="removeContact(this)">Delete</button>`
+        <button id="btn-delete" onclick="removeContact(this, ${result.indexOf(contactDetails)})">Delete</button>`
         contactList.appendChild(contactItem);
     });
 }
