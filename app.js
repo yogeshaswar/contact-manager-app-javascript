@@ -3,12 +3,28 @@ const firstName = document.getElementById("name")
 const email = document.getElementById("email")
 const mobileNumber = document.getElementById("mobile-number")
 const contactList = document.getElementById("contact-list")
+// created array to store contacts in key : value pair
+var allContacts = []
 
 btnAddContact.addEventListener("click", function(e){
     e.preventDefault()
     const isValid = form.checkValidity()
     if(isValid) {
+        var contactDetails = {
+            firstName : firstName.value,
+            email : email.value,
+            mobileNumber : mobileNumber.value
+        }
+        allContacts.push(contactDetails);
+        console.log(details)
+        // To save data in local storage
+        //can't pass array to local storage function so converted into string
+        localStorage.setItem("name", JSON.stringify(allContacts));
+
+        //To create contact HTML - new div element
         createContact()
+
+        //To delete old entered values
         firstName.value = ""
         email.value = ""
         mobileNumber.value = ""
